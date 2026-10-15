@@ -1,4 +1,3 @@
-# sm-patient-readmission-mlops
 
 # Patient Readmission Prediction: End-to-End MLOps on AWS SageMaker
 
@@ -10,10 +9,9 @@
 
 ## 1. Impact at a Glance
 
-![Measured impact](docs/images/impact.png)
 
 | Metric | Result |
-|---|---|
+|--------|--------|
 | Manual model release effort | **reduced by 70%** |
 | Deployment time (build, test, pipeline deploy) | **reduced by 60%** |
 | Cloud cost | **reduced by 90%** |
