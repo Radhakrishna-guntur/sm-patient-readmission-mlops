@@ -14,7 +14,7 @@
 |--------|--------|
 | Manual model release effort | **reduced by 70%** |
 | Deployment time (build, test, pipeline deploy) | **reduced by 80%** |
-| Cloud cost | **reduced by 40%** |
+| Cloud cost | **reduced by 50%** |
 
 ---
 
@@ -37,8 +37,8 @@ Hospitals are penalised for avoidable 30-day readmissions, and each one is costl
 
 ### End-to-end flow
 
-| # | Step | AWS / tool | What happens |
-|---|---|---|---|
+| # | Step  | AWS / tool | What happens |
+|---|------ |------------|--------------|
 | 1 | Develop | Git | Developer works on a feature branch and opens a pull request |
 | 2 | Source control | GitHub | Code and DVC pointers are versioned; raw data stays in S3 |
 | 3 | CI/CD | GitHub Actions | Lint, unit tests and data tests run; on merge the deploy workflow runs |
@@ -62,7 +62,7 @@ Hospitals are penalised for avoidable 30-day readmissions, and each one is costl
 ## 4. AWS Services Used
 
 | Service | Role in this project |
-|---|---|
+|---------|----------------------|
 | **Amazon SageMaker Pipelines** | Orchestrates preprocessing, training, evaluation, conditional registration |
 | **SageMaker Processing Jobs** | Scalable preprocessing and evaluation containers |
 | **SageMaker Training Jobs** | Model training, using Managed Spot Training to cut cost |
@@ -117,7 +117,8 @@ pipeline.upsert(role_arn=ROLE_ARN)
 
 ## 6. CI/CD with GitHub Actions
 
-![CI/CD flow](docs/images/cicd_flow.png)
+<img width="2142" height="767" alt="cicd_flow" src="https://github.com/user-attachments/assets/f008f2d1-6d28-40e4-baec-d6532e7f09a5" />
+
 
 - **Pull request:** `ci.yml` runs linting, `pytest` unit tests and data-validation tests.
 - **Merge to main:** `deploy-pipeline.yml` assumes an AWS role through **OIDC**, upserts the SageMaker pipeline and starts an execution in **dev**.
@@ -174,9 +175,9 @@ jobs:
 ## 8. Serving: Real-time and Batch
 
 | Mode | Use case | Why |
-|---|---|---|
+|------|----------|-----|
 | **Real-time endpoint** | Risk score when a patient is discharged | Low latency, autoscaling on invocations per instance |
-| **Batch Transform** | Nightly scoring of all discharged patients | Pay only while the job runs, no always-on instance |
+| **Batch Transform**    | Nightly scoring of all discharged patients | Pay only while the job runs, no always-on instance |
 
 Features come from **SageMaker Feature Store** in both modes (online store for real-time, offline store for training and batch), which avoids training-serving skew.
 
@@ -184,7 +185,8 @@ Features come from **SageMaker Feature Store** in both modes (online store for r
 
 ## 9. Monitoring and Automated Retraining
 
-![Retraining loop](docs/images/retraining_loop.png)
+<img width="1351" height="1159" alt="retraining_loop" src="https://github.com/user-attachments/assets/e332a916-b3c0-409b-aa1c-9d8d9a8366a3" />
+
 
 1. The endpoint captures request/response data to S3 (**Data Capture**).
 2. **Model Monitor** schedules compare live data with baselines (data quality, and model quality when ground-truth labels arrive).
@@ -197,7 +199,7 @@ Features come from **SageMaker Feature Store** in both modes (online store for r
 ## 10. Cost Optimisation
 
 | Technique | Effect |
-|---|---|
+|-----------|--------|
 | Batch Transform for non-urgent scoring instead of an always-on endpoint | No idle inference cost |
 | Managed Spot Training | Large discount on training compute |
 | Right-sized instances (based on CloudWatch utilisation) | Avoids over-provisioning |
@@ -205,7 +207,7 @@ Features come from **SageMaker Feature Store** in both modes (online store for r
 | Pipeline step caching | Skips unchanged steps on re-runs |
 | Dev/test environments torn down after validation | No forgotten resources |
 
-Combined result: **90% reduction in cloud cost** compared with the initial always-on setup.
+Combined result: **50% reduction in cloud cost** compared with the initial always-on setup.
 
 ---
 
@@ -218,20 +220,10 @@ Combined result: **90% reduction in cloud cost** compared with the initial alway
 
 ---
 
-## 12. How the Results Were Measured
-
-| Metric | Result | Baseline vs. optimised (fill in your own numbers) |
-|---|---|---|
-| Manual release effort | -70% | Manual steps (train, evaluate, package, register, deploy) took **[X hrs]**; after pipeline automation **[Y hrs]** |
-| Deployment time | -60% | Manual build/test/deploy **[X min]**; GitHub Actions run **[Y min]** (from workflow run logs) |
-| Cloud cost | -90% | Initial setup **[$X/month]** vs. optimised **[$Y/month]** (from AWS Cost Explorer) |
-
----
-
-## 13. Repository Structure
+## 12. Repository Structure
 
 ```
-patient-readmission-sagemaker-mlops/
+sm-patient-readmission-mlops/
 ├── .github/workflows/
 │   ├── ci.yml                    # lint + pytest on pull requests
 │   └── deploy-pipeline.yml       # OIDC auth, upsert + run pipeline, promote
@@ -261,7 +253,7 @@ patient-readmission-sagemaker-mlops/
 
 ---
 
-## 14. Getting Started
+## 13. Getting Started
 
 ```bash
 # 1. Clone and set up
@@ -285,7 +277,7 @@ python deploy/deploy_endpoint.py --stage dev
 
 ---
 
-## 15. Future Improvements
+## 14. Future Improvements
 
 - Shadow or canary deployments for safer rollouts
 - **SageMaker Clarify** for bias and explainability reporting
@@ -294,6 +286,4 @@ python deploy/deploy_endpoint.py --stage dev
 
 ---
 
-## Author
-
-**Radhakrishna** | [GitHub](https://github.com/Radhakrishna-guntur)
+## Author.   **Radhakrishna** | [GitHub](https://github.com/Radhakrishna-guntur)
