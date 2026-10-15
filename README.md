@@ -13,10 +13,8 @@
 | Metric | Result |
 |--------|--------|
 | Manual model release effort | **reduced by 70%** |
-| Deployment time (build, test, pipeline deploy) | **reduced by 60%** |
-| Cloud cost | **reduced by 90%** |
-
-> **How these were measured:** see [Section 12](#12-how-the-results-were-measured). Replace the notes there with your own baseline and final numbers.
+| Deployment time (build, test, pipeline deploy) | **reduced by 80%** |
+| Cloud cost | **reduced by 40%** |
 
 ---
 
@@ -28,13 +26,14 @@ Hospitals are penalised for avoidable 30-day readmissions, and each one is costl
 
 **Modelling choice:** recall is prioritised over raw accuracy because missing a high-risk patient costs more than a false alarm. The data is class-imbalanced, so the validation gate checks **AUC and recall**, not accuracy.
 
-> **Data note:** the repository contains only synthetic or public sample data (for example the UCI *Diabetes 130-US hospitals* dataset). No real patient data (PHI) is stored in this repo.
+> **Data note:** the repository contains only synthetic or public sample data. No real patient data (PHI) is stored in this repo.
 
 ---
 
 ## 3. Architecture
 
-![End-to-end architecture](docs/images/architecture.png)
+<img width="2405" height="1500" alt="architecture" src="https://github.com/user-attachments/assets/d3f28539-b3d8-4170-93e3-ac7192893901" />
+
 
 ### End-to-end flow
 
