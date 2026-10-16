@@ -6,7 +6,6 @@
 **Stack:** Python | Git | DVC | GitHub Actions | SageMaker Pipelines, Processing, Training, Feature Store, Model Registry, Model Monitor, Real-time and Batch Endpoints | CloudWatch | EventBridge | S3 | IAM | KMS
 
 ---
-
 ## 1. Impact at a Glance
 
 
