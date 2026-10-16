@@ -80,7 +80,6 @@ Hospitals are penalised for avoidable 30-day readmissions, and each one is costl
 
 ## 5. SageMaker Pipeline (Training and Conditional Registration)
 
-![SageMaker pipeline DAG](docs/images/pipeline_dag.png)
 
 Core of the validation gate in `pipelines/training_pipeline.py` (simplified):
 
