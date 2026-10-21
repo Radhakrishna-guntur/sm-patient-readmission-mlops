@@ -13,7 +13,7 @@
 |--------|--------|
 | Manual model release effort | **reduced by 70%** |
 | Deployment time (build, test, pipeline deploy) | **reduced by 80%** |
-| Cloud cost | **reduced by 50%** |
+| Aws Cloud cost | **reduced by 50%** |
 
 ---
 
