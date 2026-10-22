@@ -196,8 +196,8 @@ Features come from **SageMaker Feature Store** in both modes (online store for r
 
 ## 10. Cost Optimisation
 
-| Technique | Effect |
-|-----------|--------|
+| Technique  | Effect  |
+|------------|---------|
 | Batch Transform for non-urgent scoring instead of an always-on endpoint | No idle inference cost |
 | Managed Spot Training | Large discount on training compute |
 | Right-sized instances (based on CloudWatch utilisation) | Avoids over-provisioning |
@@ -284,4 +284,4 @@ python deploy/deploy_endpoint.py --stage dev
 
 ---
 
-## Author.   **Radhakrishna** | [GitHub](https://github.com/Radhakrishna-guntur)
+## Author.   **Radhakrishna G** | [GitHub](https://github.com/Radhakrishna-guntur)
