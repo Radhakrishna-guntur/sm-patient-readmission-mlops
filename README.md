@@ -205,7 +205,7 @@ Features come from **SageMaker Feature Store** in both modes (online store for r
 | Pipeline step caching | Skips unchanged steps on re-runs |
 | Dev/test environments torn down after validation | No forgotten resources |
 
-Combined result: **50% reduction in cloud cost** compared with the initial always-on setup.
+Combined result: **40% reduction in cloud cost** compared with the initial always-on setup.
 
 ---
 
