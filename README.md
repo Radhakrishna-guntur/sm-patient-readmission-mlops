@@ -1,7 +1,7 @@
 
 # Patient Readmission Prediction: End-to-End MLOps on AWS SageMaker
 
-> Automated, governed and monitored machine learning system that predicts 30-day hospital readmission risk, built with **Amazon SageMaker AI**, **GitHub Actions**,  **Python** **CloudWatch** and **DVC**.
+> Automated, governed and monitored machine learning system that predicts 30-day hospital readmission risk, built with **Amazon SageMaker AI**, **GitHub Actions**,  **Python** **CloudWatch**, and **DVC**.
 
 **Stack:** Python | Git | DVC | GitHub Actions | SageMaker Pipelines, Processing, Training, Feature Store, Model Registry, Model Monitor, Real-time and Batch Endpoints | CloudWatch | EventBridge | S3 | IAM | KMS
 
