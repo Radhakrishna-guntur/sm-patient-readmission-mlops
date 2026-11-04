@@ -277,11 +277,11 @@ python deploy/deploy_endpoint.py --stage dev
 
 ## 14. Future Improvements
 
-- Shadow or canary deployments for safer rollouts
-- **SageMaker Clarify** for bias and explainability reporting
-- Infrastructure as code (Terraform or CDK) for the full environment
-- Multi-account setup (dev, staging, prod) with cross-account model promotion
+- Shadow or canary deployments for safer rollouts.
+- **SageMaker Clarify** for bias and explainability reporting.
+- Infrastructure as code (Terraform or CDK) for the full environment.
+- Multi-account setup (dev, staging, prod) with cross-account model promotion.
 
 ---
 
-## Author.   **Radhakrishna G** | [GitHub](https://github.com/Radhakrishna-guntur)
+## Author.  **Radhakrishna G** | [GitHub](https://github.com/Radhakrishna-guntur)
