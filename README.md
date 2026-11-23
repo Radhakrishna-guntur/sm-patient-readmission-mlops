@@ -8,7 +8,6 @@
 ---
 ## 1. Impact at a Glance
 
-
 | Metric | Result |
 |--------|--------|
 | Manual model release effort | **reduced by 70%** |
@@ -110,13 +109,11 @@ pipeline = Pipeline(
 )
 pipeline.upsert(role_arn=ROLE_ARN)
 ```
-
 ---
 
 ## 6. CI/CD with GitHub Actions
 
 <img width="2142" height="767" alt="cicd_flow" src="https://github.com/user-attachments/assets/f008f2d1-6d28-40e4-baec-d6532e7f09a5" />
-
 
 - **Pull request:** `ci.yml` runs linting, `pytest` unit tests and data-validation tests.
 - **Merge to main:** `deploy-pipeline.yml` assumes an AWS role through **OIDC**, upserts the SageMaker pipeline and starts an execution in **dev**.
@@ -158,18 +155,14 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
       - run: python deploy/deploy_endpoint.py --stage prod
 ```
-
 ---
-
 ## 7. Model Versioning and Governance
 
 - Every successful pipeline run creates a new **model package version** in a Model Package Group, with metrics and lineage attached.
 - New versions start as `PendingManualApproval`; only an **approved** version can be deployed.
 - Datasets are versioned with **DVC**, so any model version can be traced to the exact data and code (Git commit) that produced it.
 - **Rollback** is a re-approval of the previous version plus an endpoint update, with no retraining required.
-
 ---
-
 ## 8. Serving: Real-time and Batch
 
 | Mode | Use case | Why |
